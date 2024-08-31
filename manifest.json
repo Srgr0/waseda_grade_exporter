@@ -1,16 +1,10 @@
 {
   "manifest_version": 3,
   "name": "Waseda Grade Exporter",
-  "version": "1.0",
+  "version": "1.1",
   "description": "成績一覧をcsv形式で出力します。",
-  "permissions": ["activeTab", "scripting", "contextMenus"],
+  "permissions": ["scripting", "activeTab", "contextMenus"],
   "background": {
     "service_worker": "background.js"
-  },
-  "content_scripts": [
-    {
-      "matches": ["*://gradereport-ty.waseda.jp/kyomu/*"],
-      "js": ["content.js"]
-    }
-  ]
+  }
 }
