@@ -6,7 +6,7 @@
 2. 成績紹介ページを開き、右クリックして"成績一覧をcsvで書き出す"を選択します。![06_export-grades](https://github.com/user-attachments/assets/dcaf73bd-468a-4545-b717-650858cfb5bd)
 3. 出力されたcsvファイルはダウンロードフォルダに保存されます。Excelなどで開けます。
 
-### 使い方(非推奨,直接ダウンロードする場合)
+## 使い方(非推奨,直接ダウンロードする場合)
 上の方法でインストールできない場合のみ。拡張機能のアップデートが行われないため、推奨しません。
 1. このページのCode -> Download ZIPから、拡張機能をダウンロードしてください。![01_download-zip](https://github.com/user-attachments/assets/551dc0dd-f85f-4557-a603-0cd3c55c425c)
 2. Windowsではエクスプローラー、MacではFinderを開き、ダウンロードしたZipファイルを展開してください。![02_unzip](https://github.com/user-attachments/assets/06a5e17a-4622-493d-b873-bcc4288b760a)
