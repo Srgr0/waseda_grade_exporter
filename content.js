@@ -1,13 +1,13 @@
 function exportTableToCSV() {
   var csv = [];
   // CSVのヘッダーを設定
-  csv.push(["科目群", "科目区分1", "科目区分2", "科目名", "取得年度", "学期", "単位", "成績", "GP"].join(","));
+  csv.push(["大分類科目区分", "中分類科目区分", "小分類科目区分", "科目名", "取得年度", "学期", "単位", "成績", "GP"].join(","));
 
   // 成績表の行を選択
   var rows = document.querySelectorAll("tr.operationboxf");
-  let currentGroup = "";    // 科目群
-  let currentCategory1 = ""; // 科目区分1
-  let currentCategory2 = ""; // 科目区分2
+  let currentGroup = "";    // 大分類科目区分
+  let currentCategory1 = ""; // 中分類科目区分
+  let currentCategory2 = ""; // 小分類科目区分
 
   // 学籍番号と名前を取得
   var studentInfoText = document.querySelector("td[colspan='2']").innerText.trim();
@@ -20,29 +20,29 @@ function exportTableToCSV() {
   rows.forEach(row => {
     var cols = row.querySelectorAll("td");
 
-    // 行にデータが少ない場合は、「科目種別」の行として識別
+    // 行にデータが少ない場合は、「中分類科目区分」の行として識別
     if (cols.length < 6 || (cols[1].innerText.trim() === "" && cols[2].innerText.trim() === "")) {
       const subjectName = cols[0].innerText.trim();
 
-      // 科目群の設定
+      // 大分類科目区分の設定
       if (subjectName.startsWith("◎") && subjectName.endsWith("◎")) {
         currentGroup = subjectName.replace(/◎/g, "").trim();
-        currentCategory1 = "";  // 新しい科目群が始まったら区分をリセット
+        currentCategory1 = "";  // 新しい大分類科目区分が始まったら中分類科目区分、小分類科目区分をリセット
         currentCategory2 = "";
       }
-      // 科目区分1の設定
+      // 中分類科目区分の設定
       else if (subjectName.startsWith("【") && subjectName.endsWith("】")) {
         currentCategory1 = subjectName.replace(/【|】/g, "").trim();
-        currentCategory2 = "";  // 新しい区分1が始まったら区分2をリセット
+        currentCategory2 = "";  // 新しい中分類科目区分が始まったら小分類科目区分をリセット
       }
-      // 科目区分2の設定
+      // 小分類科目区分の設定
       else if (subjectName.startsWith("《") && subjectName.endsWith("》")) {
         currentCategory2 = subjectName.replace(/《|》/g, "").trim();
       }
       return;  // 次の行へ
     }
 
-    // 各科目の行データを取得し、「科目群」「科目区分1」「科目区分2」を追加
+    // 各科目の行データを取得し、「大分類科目区分」「中分類科目区分」「小分類科目区分」を追加
     var rowData = [
       currentGroup,
       currentCategory1,
